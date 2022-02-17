@@ -18,8 +18,14 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 	newnode->left = NULL;
 	newnode->right = NULL;
 	newnode->parent = parent;
-	temp = parent->right;
-	parent->right = newnode;
-	newnode->right = temp;
+	if (!(parent->left))
+		parent->right = newnode;
+	else
+	{
+		temp = parent->right;
+		parent->right = newnode;
+		newnode->right = temp;
+	}
 	return (newnode);
 }
+
